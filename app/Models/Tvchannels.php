@@ -10,9 +10,6 @@ class Tvchannels extends Model
 {
     use HasFactory;
 
-
-    protected $table = 'tvchannels';
-
     protected $fillable = [
         'name',
         'icon',

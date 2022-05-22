@@ -9,10 +9,6 @@ class Stadiums extends Model
 {
     use HasFactory;
 
-    // Table Name
-    protected $table = 'stadiums';
-
-
     protected $fillable = [
         'name',
         'city',
@@ -20,6 +16,4 @@ class Stadiums extends Model
         'lng',
         'image'
     ];
-
-
 }

@@ -10,8 +10,6 @@ class Groups extends Model
 {
     use HasFactory;
 
-    protected $table = "groups";
-
     protected $fillable = [
         'name',
         'winner',

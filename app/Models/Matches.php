@@ -10,9 +10,6 @@ class Matches extends Model
 {
     use HasFactory;
 
-
-    protected $table = 'matches';
-
     protected $fillable = [
         'name',
         'home_team',
@@ -26,7 +23,6 @@ class Matches extends Model
     ];
 
     public function tvchannels(){
-
         return $this->belongsToMany(
                 Tvchannels::class,
                 'tvchannels_matches',

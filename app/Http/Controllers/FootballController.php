@@ -18,20 +18,17 @@ class FootballController extends Controller
      */
     public function index()
     {
-        // i need to return everything and i will return tvchannels inside of the matches
-        //i just started!
-
 
         // Get all matches
         $Matches = Matches::all();
         // create an array of matches
         $MatchesArray = array();
-        
-        foreach($Matches as $Match){
-            
-            if($Match){
+
+        foreach($Matches as $match){
+
+            if($match){
                 //if we find a match we need to find the channels that belongs to this match
-                $channels = Matches::find($Match->id)->tvchannels;
+                $channels = Matches::find($match->id)->tvchannels;
                 //create an array of channels id
                 $channelsID = array();
                 //add all IDs to the new channelsID array - we can return names here if we would like to.
@@ -39,10 +36,10 @@ class FootballController extends Controller
                     array_push($channelsID, $channel->id);
                 }
                 // add the channelsID array to the match so we can return the match with the array channels
-                $Match['tvchannels'] = $channelsID;
+                $match['tvchannels'] = $channelsID;
 
                 // add the new match with all tvchannel to the matchesarray
-                array_push($MatchesArray, $Match);
+                array_push($matchesArray, $match);
             }else {
                 //if we cant find a Match we return 400
                 return response()->json(['message' => 'Match not found - Check if you have the right ID', 'Data' => null],400);
@@ -53,8 +50,8 @@ class FootballController extends Controller
         $team = Teams::all();
         $group = Groups::all();
 
-        //if everything went well we will return 200 and the $MatchesArray with all matches and channels
-        return response()->json(['message' => 'Success', 'Football' => ['Teams' => $team, 'Groups' => $group, 'Stadiums' => $stadium, 'Matches' => $MatchesArray] ],200);
+        //if everything went well we will return 200 and the $matchesArray with all matches and channels
+        return response()->json(['message' => 'Success', 'Football' => ['Teams' => $team, 'Groups' => $group, 'Stadiums' => $stadium, 'Matches' => $matchesArray] ],200);
     }
 
 }

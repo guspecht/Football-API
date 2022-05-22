@@ -10,10 +10,6 @@ class Teams extends Model
 {
     use HasFactory;
 
-
-    protected $table = 'teams';
-
-
     protected $fillable = [
         'name',
         'fifaCode',
@@ -23,7 +19,6 @@ class Teams extends Model
         'emojiString',
         'groups_id'
     ];
-
 
     public function groups(){
         $this->hasMany(Groups::class);
